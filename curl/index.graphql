@@ -1,0 +1,28 @@
+type ArticlesEntry {
+  author: String
+  content: String
+  description: String
+  publishedAt: DateTime
+  source: Source
+  title: String
+  url: String
+  urlToImage: String
+}
+
+type Root {
+  articles: [ArticlesEntry]
+  status: String
+  totalResults: Int
+}
+
+type Source {
+  id: String
+  name: String
+}
+
+type Query {
+  everything(apiKey: String, q: String, sortBy: String, language: String): Root
+    @rest(endpoint: "https://newsapi.org/v2/everything")
+  topHeadlines(apiKey: String, category: String, country: String): Root
+    @rest(endpoint: "https://newsapi.org/v2/top-headlines")
+}
