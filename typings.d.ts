@@ -26,6 +26,7 @@ interface NewsVariables {
 }
 
 type Categories = {
+  all;
   business;
   entertainment;
   general;
@@ -36,6 +37,7 @@ type Categories = {
 };
 
 type Category =
+  | "all"
   | "business"
   | "entertainment"
   | "general"

@@ -6,7 +6,7 @@ type Props = {
 };
 
 async function SearchPage({ searchParams }: Props) {
-  const news: NewsData = await fetchNews(searchParams?.q, true);
+  const news: NewsData = await fetchNews("1", searchParams?.q, true);
 
   return (
     <div>

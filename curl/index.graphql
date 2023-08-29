@@ -21,6 +21,6 @@ type Source {
 }
 
 type Query {
-  everything(apiKey: String, q: String, sortBy: String, language: String): Root
+  everything(apiKey: String, q: String, sortBy: String, page: String): Root
     @rest(endpoint: "https://newsapi.org/v2/everything")
 }

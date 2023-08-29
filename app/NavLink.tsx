@@ -14,9 +14,9 @@ function NavLink({ category, isActive }: Props) {
        dark:text-gray-300 dark:hover:text-white capitalize text-xs rounded-full px-3 text-center py-2 
       ${
         isActive &&
-        "underline dark:decoration-indigo-500 decoration-orange-400 underline-offset-4 font-bold"
+        "underline dark:decoration-indigo-500 dark:text-white decoration-orange-400 underline-offset-4 "
       }`}
-      href={`/news/${category}`}
+      href={`/news/1/${category}`}
     >
       {category}
     </Link>

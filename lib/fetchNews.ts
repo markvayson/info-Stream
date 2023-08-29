@@ -2,10 +2,15 @@ import { gql } from "graphql-request";
 import sortNewsByImage from "./sortNewsByImage";
 import { categories } from "@/constants";
 
-const fetchNews = async (q?: string, isDynamic?: boolean) => {
+const fetchNews = async (page: string, q?: string, isDynamic?: boolean) => {
   const query = gql`
-    query Everything($apiKey: String, $q: String, $sortBy: String) {
-      everything(apiKey: $apiKey, q: $q, sortBy: $sortBy) {
+    query Everything(
+      $apiKey: String
+      $page: String
+      $q: String
+      $sortBy: String
+    ) {
+      everything(apiKey: $apiKey, page: $page, q: $q, sortBy: $sortBy) {
         articles {
           author
           content
@@ -29,7 +34,6 @@ const fetchNews = async (q?: string, isDynamic?: boolean) => {
     "https://puertopiritu.stepzen.net/api/morbid-platypus/__graphql",
     {
       method: "POST",
-      cache: isDynamic ? "no-cache" : "default",
       next: isDynamic ? { revalidate: 0 } : { revalidate: 20 },
       headers: {
         "Content-Type": "application/json",
@@ -41,6 +45,7 @@ const fetchNews = async (q?: string, isDynamic?: boolean) => {
           apiKey: process.env.NEWS_API_KEY,
           q,
           sortBy: "publishedAt",
+          page,
         },
       }),
     }
