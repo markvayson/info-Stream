@@ -2,16 +2,11 @@ import fetchNews from "@/lib/fetchNews";
 import NewsList from "../NewsList";
 
 type Props = {
-  searchParams?: { q: string; language: Language };
+  searchParams?: { q: string };
 };
 
 async function SearchPage({ searchParams }: Props) {
-  const news: NewsData = await fetchNews(
-    "everything",
-    searchParams?.language.toLowerCase(),
-    searchParams?.q,
-    true
-  );
+  const news: NewsData = await fetchNews(searchParams?.q, true);
 
   return (
     <div>

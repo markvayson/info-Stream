@@ -8,10 +8,10 @@ function NavLinks() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    return pathname?.split("/").pop() === pathname;
+    return pathname?.split("/").pop() === path;
   };
   return (
-    <nav className="flex px-2 gap-4 overflow-x-auto">
+    <nav className="md:justify-center w-full md:gap-10 flex px-2 pb-2 gap-4 overflow-x-auto">
       {categories.map((category) => (
         <NavLink
           isActive={isActive(category)}

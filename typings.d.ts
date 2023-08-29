@@ -9,8 +9,6 @@ type Article = {
   urlToImage: string;
 };
 
-type endpoint = "everything" | "topHeadlines";
-
 interface Source {
   id: string;
   name: string;
@@ -45,19 +43,3 @@ type Category =
   | "science"
   | "sports"
   | "technology";
-
-type Language =
-  | "AR"
-  | "DE"
-  | "EN"
-  | "ES"
-  | "FR"
-  | "HE"
-  | "IT"
-  | "NL"
-  | "NO"
-  | "PT"
-  | "RU"
-  | "SV"
-  | "UD"
-  | "ZH";

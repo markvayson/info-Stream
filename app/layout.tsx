@@ -4,8 +4,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "News App",
-  description: "",
+  title: "Info Stream",
+  description:
+    "Stay informed with InfoStream, your trusted source for breaking news, in-depth analysis, and trending stories from around the world. Get real-time updates on politics, technology, entertainment, and more. Download the InfoStream app now to stay connected to the latest events and stories shaping our world.",
 };
 
 export default function RootLayout({
@@ -14,10 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-100 p-2 dark:bg-slate-900 transition-all duration-700">
-        <Header />
-        <div className="">{children}</div>
+    <html lang="en" suppressHydrationWarning>
+      <body className="justify-center bg-gray-100 dark:bg-gray-800 transition-all duration-700">
+        <Providers attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <div className="pt-36 px-4 md:mx-40">{children}</div>
+        </Providers>
       </body>
     </html>
   );

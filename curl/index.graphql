@@ -23,6 +23,4 @@ type Source {
 type Query {
   everything(apiKey: String, q: String, sortBy: String, language: String): Root
     @rest(endpoint: "https://newsapi.org/v2/everything")
-  topHeadlines(apiKey: String, category: String, country: String): Root
-    @rest(endpoint: "https://newsapi.org/v2/top-headlines")
 }

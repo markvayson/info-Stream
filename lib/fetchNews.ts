@@ -1,68 +1,29 @@
 import { gql } from "graphql-request";
 import sortNewsByImage from "./sortNewsByImage";
+import { categories } from "@/constants";
 
-const fetchNews = async (
-  end: endpoint,
-  language?: string,
-  q?: string,
-  isDynamic?: boolean
-) => {
-  let query;
-  if (end === "everything") {
-    query = gql`
-      query Everything(
-        $apiKey: String
-        $language: String
-        $q: String
-        $sortBy: String
-      ) {
-        everything(
-          apiKey: $apiKey
-          language: $language
-          q: $q
-          sortBy: $sortBy
-        ) {
-          articles {
-            author
-            content
-            description
-            publishedAt
-            title
-            url
-            urlToImage
-            source {
-              id
-              name
-            }
+const fetchNews = async (q?: string, isDynamic?: boolean) => {
+  const query = gql`
+    query Everything($apiKey: String, $q: String, $sortBy: String) {
+      everything(apiKey: $apiKey, q: $q, sortBy: $sortBy) {
+        articles {
+          author
+          content
+          description
+          publishedAt
+          title
+          url
+          urlToImage
+          source {
+            id
+            name
           }
-          status
-          totalResults
         }
+        status
+        totalResults
       }
-    `;
-  } else if (end === "topHeadlines") {
-    query = gql`
-      query TopHeadlines($apiKey: String, $category: String, $country: String) {
-        topHeadlines(apiKey: $apiKey, category: $category, country: $country) {
-          articles {
-            author
-            content
-            description
-            publishedAt
-            source {
-              id
-              name
-            }
-            title
-            url
-            urlToImage
-          }
-          status
-          totalResults
-        }
-      }
-    `;
-  }
+    }
+  `;
 
   const res = await fetch(
     "https://puertopiritu.stepzen.net/api/morbid-platypus/__graphql",
@@ -76,25 +37,17 @@ const fetchNews = async (
       },
       body: JSON.stringify({
         query,
-        variables:
-          end === "everything"
-            ? {
-                apiKey: process.env.NEWS_API_KEY,
-                q,
-                sortBy: "publishedAt",
-                language,
-              }
-            : {
-                apiKey: process.env.NEWS_API_KEY,
-                category: q,
-                country: "us",
-              },
+        variables: {
+          apiKey: process.env.NEWS_API_KEY,
+          q,
+          sortBy: "publishedAt",
+        },
       }),
     }
   );
   const newsResponse = await res.json();
 
-  const data = sortNewsByImage(newsResponse.data[end]);
+  const data = sortNewsByImage(newsResponse.data.everything);
 
   return data;
 };
