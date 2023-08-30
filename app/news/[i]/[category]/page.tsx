@@ -2,7 +2,6 @@ import NewsList from "@/app/NewsList";
 import Pagination from "@/app/Pagination";
 import { categories } from "@/constants";
 import fetchNews from "@/lib/fetchNews";
-import Image from "next/image";
 
 type Props = {
   params: { i: string; category: Category };

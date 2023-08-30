@@ -1,5 +1,3 @@
-import fetchNews from "@/lib/fetchNews";
-import NewsList from "./NewsList";
 import Image from "next/image";
 import header from "@/public/header.png";
 import {

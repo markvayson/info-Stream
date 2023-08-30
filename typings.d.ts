@@ -36,19 +36,6 @@ type Categories = {
   technology;
 };
 
-type Attributions = {
-  name: Attribution;
-  url: string;
-};
-
-type Attribution =
-  | "nextjs"
-  | "vercel"
-  | "tailwindcss"
-  | "heroicons"
-  | "newsapi"
-  | "stepzen";
-
 type Category =
   | "all"
   | "business"
