@@ -15,14 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="./favicon.ico" />
-      </head>
-      <body className="justify-center bg-gray-100 dark:bg-gray-800 transition-all duration-700">
+    <html className="h-full" lang="en" suppressHydrationWarning>
+      <body className="h-full bg-gray-100 dark:bg-gray-800 ">
         <Providers attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          <div className="pt-36 px-4 md:mx-40 overflow-x-hidden">
+          <div className="pt-36 h-full px-4 md:mx-40 overflow-x-hidden">
             {children}
           </div>
         </Providers>

@@ -10,7 +10,9 @@ async function SearchPage({ searchParams }: Props) {
 
   return (
     <div>
-      <h1>Search Results for: {searchParams?.q}</h1>
+      <h1 className="text-lg text-center underline-offset-4 uppercase font-bold tracking-wider underline decoration-4 decoration-orange-500 dark:decoration-indigo-500">
+        {searchParams?.q}
+      </h1>
       <NewsList news={news} />
     </div>
   );

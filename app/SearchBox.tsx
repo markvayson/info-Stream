@@ -15,7 +15,7 @@ function SearchBox() {
     e.preventDefault();
     if (!input) return;
 
-    router.push(`/search?q=${input}`);
+    router.push(`/search?q=${input}&page=1`);
     setInput("");
   };
   return (
@@ -23,7 +23,7 @@ function SearchBox() {
       onSubmit={handleSearch}
       className=" gap-2 md:flex-none md:w-2/3 flex-1 items-center flex "
     >
-      <div className="flex pl-2 pr-1 rounded-lg items-center dark:text-gray-300 text-gray-500 border-none dark:bg-gray-700  flex-1">
+      <div className="flex pl-2 pr-1 rounded-lg items-center dark:text-gray-300 text-gray-500 border-none bg-gray-200 dark:bg-gray-700  flex-1">
         <MagnifyingGlassIcon className="w-5 h-5" />
         <input
           type="text"
